@@ -179,6 +179,16 @@
             * I also will add a link to a calendar page <br>
             <body>Will add a banner / stripe over left corner. Provides continuity to the current design.</body>
             <body>Add a collapsible group item (accordian bootstrap) to hold diagrams, cloud info.</body>
+
+            {% if user.is_authenticated %}
+                Hello, {{ user.username }}.
+                <a href="{% url 'users:logout' %}">Log out</a>
+            {% else %}
+                <a href="{% url 'users:register' %}">Register</a> -
+                <a href="{% url 'users:login' %}">Log in</a>
+            {% endif %}
+
+
             </p>
         </div>
     

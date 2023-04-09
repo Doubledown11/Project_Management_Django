@@ -23,6 +23,7 @@ def cloud(request):
 
 
 #Views for Employees
+@login_required
 def employees(request): 
     """A page used to contain information about employee"""
     employee_list = Employee.objects.order_by('-emp_Fname')
@@ -59,6 +60,7 @@ def new_employee(request):
 
 
 #Views for Projects
+@login_required
 def projects(request): 
     """Show projects from projects table"""
     project_list = Project.objects.order_by("project_name")
@@ -124,6 +126,7 @@ def new_task(request):
 
 
 #Views for costs
+@login_required
 def costs(request): 
     """Shows costs associated with projects"""
     cost_list = Cost.objects.order_by("name")
@@ -197,6 +200,7 @@ def new_hour(request):
 
 
 # Views for clients
+@login_required
 def clients(request): 
     """A page to be used for holding client information"""
     client_list = Client.objects.order_by("name")

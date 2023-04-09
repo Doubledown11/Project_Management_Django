@@ -1,13 +1,17 @@
 {% extends "project_app/base.html" %}
 
 {% block content %}
+<body>
+    <br><br><br>
+    <div style = "position:relative; left:100px; top:150px; background-color:rgb(77, 65, 83);">
+        This div has relative positioning.
+        <form method="post" action="{% url 'users:register' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
 
-    <form method="post" action="{% url 'users:register' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-
-        <button name="submit">Register</button>
-        <input type="hidden" name="next" value="{% url 'project_app:index' %}" />
-    </form>
-
+            <button name="submit">Register</button>
+            <input type="hidden" name="next" value="{% url 'project_app:index' %}" />
+        </form>
+    </div>
+</body>
 {% endblock content %}

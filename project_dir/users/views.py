@@ -16,9 +16,9 @@ def register(request):
 
         if form.is_valid():
             new_user = form.save()
-            # Log the user in and then redirect to topics page.
+            # Log the user in and then redirect to app home page.
             login(request, new_user)
-        return redirect('project_app:projects')
+        return redirect('project_app:index')
 
     # Display a blank or invalid form.
     context = {'form': form}
