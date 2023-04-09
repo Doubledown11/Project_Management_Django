@@ -1,0 +1,33 @@
+{% extends "project_app/base.html" %}
+{% block content %}
+<body style="background-color:#f6faf7">
+
+<div class="alert alert-primary" role="alert">
+  <h2 class="alert-heading" style="color:purple"><center>All Tasks</center></h2>
+  <hr>
+  <p class="mb-0"><center>Select a Task to View their Information</center></p>
+</div>
+
+<div style="padding:5px">
+<a href="{% url 'project_app:new_task' %}" class="btn btn-outline-success" role="button" aria-pressed="true">Add New Task</a>
+</div>
+<div style="padding:5px">
+</div>
+<center>
+<table style="width: 90%" class="table table-striped table-light table-bordered table-hover">
+
+  {% for task in tasks %}
+    <tr>
+        <td style="text-align: center">
+            <a href="{% url 'project_app:task' task.id %}" class="btn btn-info btn-lg " role="button" aria-pressed="true">{{ task }}</a>
+        </td>
+        </tr>
+    {% empty %}
+        <li>No tasks have been added yet.</li>
+    {% endfor %}
+</table>
+</center>
+
+<br>
+</body>
+{% endblock content %}

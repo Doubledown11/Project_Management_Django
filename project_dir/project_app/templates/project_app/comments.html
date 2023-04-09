@@ -1,0 +1,14 @@
+{% extends "project_app/base.html" %}
+{% block content %}
+<p>Comments:</p>
+<ul>
+  {% for comment in comments %}
+    <li>
+        <a href = "{% url 'project_app:comment' comment.comment_ID %}">{{ comment }}</a>
+    </li>
+  {% empty %}
+    <li>No comments have been added yet.</li>
+  {% endfor %}
+</ul>
+<a href = "{% url 'project_app:new_comment' %}">Add a new comment</a>
+{% endblock content %}

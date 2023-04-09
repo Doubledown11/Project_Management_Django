@@ -1,0 +1,13 @@
+{% extends "project_app/base.html" %}
+{% block content %}
+<p>Hours:</p>
+<ul>
+  {% for hour in hours %}
+    <li>
+      {{hour}}
+    </li>
+  {% empty %}
+    <li>No hours have been recorded yet.</li>
+  {% endfor %}
+</ul>
+{% endblock content %}

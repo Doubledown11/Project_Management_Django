@@ -1,0 +1,14 @@
+{% extends "project_app/base.html" %}
+{% block content %}
+<p>Tasks:</p>
+<ul>
+  {% for task in tasks %}
+    <li>
+        { task.task_ID }  
+        {task.task_name }
+    </li>
+  {% empty %}
+    <li>No Tasks have been created yet.</li>
+  {% endfor %}
+</ul>
+{% endblock content %}

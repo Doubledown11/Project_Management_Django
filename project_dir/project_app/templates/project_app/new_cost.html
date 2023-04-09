@@ -1,0 +1,9 @@
+{% extends "project_app/base.html" %}
+{% block content %}     
+<p>Add a new topic:</p>   
+<form action="{% url 'project_app:new_cost' %}" method='post'>
+    {% csrf_token %}     
+    {{ form.as_p }}     
+    <button name="submit">Add Cost</button>     
+</form>
+{% endblock content %}

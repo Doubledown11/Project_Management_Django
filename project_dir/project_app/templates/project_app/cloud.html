@@ -1,0 +1,94 @@
+<head> 
+
+  <title>Bootstrap Example Circle Image</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<style> 
+    .image-container { 
+        flex: 1;
+
+    }
+
+    /* Flex-direction = row as we are placing the container objects inline horizontally */
+    .container { 
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .text-container { 
+        flex: 1;
+
+    }
+</style>
+
+
+<div class = "container">
+    <div class = "image-container"></div>
+        <!-- <h2>AWS</h2> -->
+        <!-- The line of code below is built such that the file path is built into the tag -->
+        {% load static %} <img src = "{% static 'project_app/media/AWS_LOGO.jpg'  %}"  class = "img-circle" alt = "AWS Logo" width = "304" height = "236">
+    </div>
+
+    <div class = "text-container">
+        Essay will go here. Add professional styling to the essay. 
+    </div>
+</div>
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+<div class = "container">
+    <div class = "image-container"></div>
+        <!-- <h2>AWS</h2> -->
+        <!-- The line of code below is built such that the file path is built into the tag -->
+        {% load static %} <img src = "{% static 'project_app/media/AWS_EDUCATE.jpg'  %}"  class = "img-circle" alt = "AWS Educate" width = "304" height = "236">
+    </div>
+
+    <div class = "text-container">
+        Essay will continue here. Add professional styling to the essay. 
+    </div>
+</div>
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+<body>
+    Will add in images for aws aws educate certification earned and date earned.
+</body>
+
+
+
+
+<style>
+
+    .center_container {
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+</style>
+
+
+<div class = "center_container">
+    {% load static %} <img src = "{% static 'project_app/media/cert_page.jpg'  %}"  alt = "Certification" width = "304" height = "236">
+</div>
+
+
+
+
+
+

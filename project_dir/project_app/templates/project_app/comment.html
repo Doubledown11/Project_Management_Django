@@ -1,0 +1,19 @@
+{% extends 'project_app/base.html' %}
+{% block content %}
+  <p>Comment: {{ comment }}</p>
+  <p>Entries:</p>
+  <p><a href = "{% url 'project_app:new_entry' comment.comment_ID %}">Add a new entry</a></p>
+  <ul>
+  {% for entry in entries %}
+    <li>
+      <p>{{ entry.updated_date|date:'M d, Y H:i' }}</p>
+      <p>{{ entry.text|linebreaks }}</p>
+    </li>
+  {% empty %}
+    <li>There are no entries for this comment yet.</li>
+  {% endfor %}
+  </ul>
+{% endblock content %}
+
+
+
