@@ -1,15 +1,15 @@
 {% extends "project_app/base.html" %}
 {% block content %}
-<body style="background-color:#f6faf7">
+<body style="background-color:#464454" style="z-index: 10";>
 
-<div class="alert alert-primary" role="alert">
-  <h2 class="alert-heading" style="color:purple"><center>All Costs</center></h2>
+<div class="alert alert-dark" role="alert" style="background-color: rgb(111, 112, 124);">
+  <h2 class="alert-heading" style="color:rgb(8, 8, 8)"><center>All Costs</center></h2>
   <hr>
-  <p class="mb-0"><center>Select a Cost to View its Related Information</center></p>
+  <p class="mb-0" style="color: black;">Select a Cost to View more Information</p>
 </div>
 
 <div style="padding:5px">
-<a href="{% url 'project_app:new_client' %}" class="btn btn-outline-success" role="button" aria-pressed="true">Add New Cost</a>
+<a href="{% url 'project_app:new_cost' %}" class="btn btn-secondary" role="button" aria-pressed="true">Add New Cost</a>
 </div>
 <div style="padding:5px">
 </div>
@@ -19,7 +19,7 @@
   {% for cost in costs %}
     <tr>
         <td style="text-align: center">
-            <a href="{% url 'project_app:cost' cost.id %}" class="btn btn-info btn-lg " role="button" aria-pressed="true">{{ cost }}</a>
+            <a href="{% url 'project_app:cost' cost.id %}" class="btn btn-secondary" role="button" aria-pressed="true">{{ cost }}</a>
         </td>
         </tr>
     {% empty %}

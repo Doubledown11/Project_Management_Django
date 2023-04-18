@@ -1,7 +1,7 @@
 #project_app/forms.py
 
 from django import forms
-from .models import Comment, Entry, Task, Employee, Project, Client, Cost
+from .models import Comment, Entry, Task, Employee, Project, Client, Cost, Hour
 
 class CommentForm(forms.ModelForm):
     class Meta:
@@ -50,4 +50,4 @@ class CostForm(forms.ModelForm):
     class Meta: 
         model = Cost 
         fields = ['name', 'Price_per', 'quantity', 'tot_cost', 'project_ID']
-        labels = ['Enter Cost Name', 'Cost per Unit','How many (qty)', 'Total Cost', 'ID of relevant project']
+        labels = {'Enter Cost Name', 'Cost per Unit','How many (qty)', 'Total Cost', 'ID of relevant project'}

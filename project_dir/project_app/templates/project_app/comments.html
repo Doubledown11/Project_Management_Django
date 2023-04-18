@@ -1,14 +1,38 @@
 {% extends "project_app/base.html" %}
 {% block content %}
-<p>Comments:</p>
-<ul>
-  {% for comment in comments %}
-    <li>
-        <a href = "{% url 'project_app:comment' comment.comment_ID %}">{{ comment }}</a>
-    </li>
-  {% empty %}
-    <li>No comments have been added yet.</li>
-  {% endfor %}
-</ul>
-<a href = "{% url 'project_app:new_comment' %}">Add a new comment</a>
+<body style="background-color:#464454" style="z-index: 10";>
+
+  
+<div class="alert alert-dark" role="alert" style="background-color: rgb(111, 112, 124);">
+  <h2 class="alert-heading" style="color:rgb(8, 8, 8)"><center>Comment Entries:</center></h2>
+  <hr>
+  <p class="mb-0" style="color: #000;"    style="background-color: rgb(235, 47, 18);"><center>Select an entry to View it's comments</center></p>
+</div>
+
+
+<div style="padding:5px">
+  <a href="{% url 'project_app:new_comment' %}" class="btn btn-secondary" role="button" aria-pressed="true" style="color: rgb(240, 241, 244);">Add New Comment</a>
+  </div>
+  <div style="padding:5px">
+  </div>
+  <center>
+  <table style="width: 90%" class="table table-striped table-light table-bordered table-hover">
+  
+    {% for comment in comments %}
+      <tr>
+          <td style="text-align: center">
+              <a href="{% url 'project_app:comment' comment.id %}" class="btn btn-secondary" role="button" aria-pressed="true">{{ comment }}</a>
+          </td>
+          </tr>
+      {% empty %}
+          <li>No comments have been added yet.</li>
+      {% endfor %}
+  </table>
+  </center>
+  
+  <br>
+  </body>
+
+
+
 {% endblock content %}

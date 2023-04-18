@@ -1,19 +1,42 @@
 {% extends 'project_app/base.html' %}
 {% block content %}
-  <p>Comment: {{ comment }}</p>
-  <p>Entries:</p>
-  <p><a href = "{% url 'project_app:new_entry' comment.comment_ID %}">Add a new entry</a></p>
-  <ul>
-  {% for entry in entries %}
-    <li>
-      <p>{{ entry.updated_date|date:'M d, Y H:i' }}</p>
-      <p>{{ entry.text|linebreaks }}</p>
-    </li>
-  {% empty %}
-    <li>There are no entries for this comment yet.</li>
-  {% endfor %}
-  </ul>
+
+<body style="background-color:#f6faf7">
+
+<div class="alert alert-dark" role="alert" style="background-color: rgb(111, 112, 124);">
+<h3><center><a href="{% url 'project_app:comment' comment.id %}" style="color:#0d0d0d"> Comment {{ comment.id }} </a> last updated on {{ comment.updated_date }}</a><center></h3>
+</div>  
+  <center>
+  <table style="width: 90%" class="table table-light table-striped table-bordered table-hover w-auto">
+      <tr><th style="text-align: left; color:rgb(14, 13, 13)">Comment:</th>
+      <td> {{ comment.body }} </td></tr>
+      <br><br>
+      <p><a href="{% url 'project_app:edit_comment' comment.id %}">Edit entry</a></p>
+      
+  </table>
+  <div style="padding:5px"><a href="{% url 'project_app:comments' %}" class="btn btn-outline-danger" role="button" aria-pressed="true">Back</a></div>
+  </center>
+</body>
 {% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

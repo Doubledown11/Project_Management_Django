@@ -1,0 +1,22 @@
+{% extends 'project_app/base.html' %}
+{% block content %}
+
+
+<body style="background-color:#f6faf7">
+<div class="alert alert-dark" role="alert" style="background-color: rgb(111, 112, 124);">
+<h3><center><a href="{% url 'project_app:comment' comment.id %}" style="color:#0d0d0d"> Comment {{ comment.id }} </a> last updated on {{ comment.updated_date }}</a><center></h3>
+</div>
+<div style="padding:5px">
+<h5>Edit <span style="color:rgb(13, 13, 190)"> {{comment}}'s </span>Text Below:</h5>    
+
+<form action="{% url 'project_app:edit_comment' comment.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}    
+    <button type="submit" class="btn btn-outline-dark" name="submit" style="color: black;">Update comment</button>     
+</form>
+</div>
+</body>
+
+
+
+{% endblock content %}

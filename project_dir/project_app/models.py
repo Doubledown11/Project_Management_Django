@@ -59,10 +59,10 @@ class Project(models.Model):
     project_name = models.CharField(max_length=100, null=True)
     start_date = models.DateField(auto_now_add=True)
     hourly_rate = models.IntegerField(null = True)
-    pm_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    pm_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     #status_code = models.ForeignKey(project_status, on_delete=models.CASCADE)
-    client_name = models.ForeignKey(Client, on_delete=models.CASCADE)
-
+    client_name = models.ForeignKey(Client, on_delete=models.CASCADE, null=True)
+    project_description = models.CharField(null=True, max_length=1000)
 
     #ADDING A SECTION FOR PROJECT_NAME 
     #IF NAME IS FOUND TO BE NULL, THEN THE PROJECT_NAME ATTRIBUTE WILL BE EQUAL TO 
@@ -73,7 +73,7 @@ class Project(models.Model):
 
     def __str__(self): 
         #Returns a string representation of the model
-        return self.text
+        return self.project_name 
     
 
 class Task(models.Model): 
@@ -101,7 +101,7 @@ class Employee(models.Model):
     entity for the various employees in the organization.
     """
     emp_Fname = models.CharField(max_length=100, null=True)
-    id = models.AutoField(primary_key=True, default=1000)
+    id = models.AutoField(primary_key=True)
     emp_Lname = models.CharField(max_length=100, null=True)
     emp_address = models.CharField(max_length=100, null=True)
     emp_phone = models.IntegerField(null = True)
@@ -109,7 +109,7 @@ class Employee(models.Model):
 
     def __str__(self):
     # Return a string representation of the model
-        return self.emp_Fname + ' ' + self.emp_Lnam
+        return self.emp_Fname + ' ' + self.emp_Lname
 
 
 

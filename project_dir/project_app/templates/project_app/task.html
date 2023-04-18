@@ -1,21 +1,24 @@
 {% extends 'project_app/base.html' %}
 {% block content %}
+
 <body style="background-color:#f6faf7">
-<div class="alert alert-success" role="alert">
-<h3  style="color:purple"><center>Task: <span style="color:blue">{{ task }}</span><center></h3>
+
+<div class="alert alert-dark" role="alert" style="background-color: rgb(111, 112, 124);">
+<center><h3 style="color:rgb(14, 13, 13)"><span style="color:0d0d0d">{{ task.task_name }}</span></h3></center>
 </div>
-<div style="padding:5px"><a href="{% url 'project_app:tasks' %}" class="btn btn-outline-danger" role="button" aria-pressed="true">Back</a></div>
 
 <center>
 <table style="width: 90%" class="table table-light table-striped table-bordered table-hover w-auto">
-    <tr><th style="text-align: left; color:darkgreen">Task Title:</th>
+    <tr><th style="text-align: left; color:rgb(14, 13, 13)">Task Title:</th>
     <td> {{ task.task_name }} </td></tr>
     
-    <tr><th style="text-align: left; color:darkgreen">Description:</th>
+    <tr><th style="text-align: left; color:rgb(14, 13, 13)">Description:</th>
     <td> {{ task.task_description }} </td></tr>
-    
+    <br><br>
+    <p><a href="{% url 'project_app:edit_task' task.id %}">Edit task information</a></p>
+
 </table>
-<br>
+<div style="padding:5px"><a href="{% url 'project_app:tasks' %}" class="btn btn-outline-danger" role="button" aria-pressed="true">Back</a></div>
 </center>
 </body>
 {% endblock content %}

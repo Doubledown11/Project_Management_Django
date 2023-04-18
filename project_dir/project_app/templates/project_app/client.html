@@ -2,38 +2,40 @@
 {% block content %}
 <body style="background-color:#f6faf7">
 
-<div class="alert alert-success" role="alert">
-<h3  style="color:purple"><center>Client: <span style="color:blue">{{ client }}</span><center></h3>
+<div class="alert alert-dark" role="alert" style="background-color: rgb(111, 112, 124);">
+<h3  style="color:rgb(14, 13, 13)"><center>Client: <span style="color:rgb(14, 13, 13)">{{ client }}</span><center></h3>
 </div>
-<div style="padding:5px"><a href="{% url 'project_app:clients' %}" class="btn btn-outline-danger" role="button" aria-pressed="true">Back</a></div>
 
 <center>
 <table style="width: 90%" class="table table-light table-striped table-bordered table-hover w-auto">
-    <tr><th style="text-align: left; color:darkgreen">Client Name:</th>
+    <tr><th style="text-align: left; color:rgb(14, 13, 13)">Client Name:</th>
     <td> {{ client.name }} </td></tr>
     
-    <tr><th style="text-align: left; color:darkgreen">Phone Number:</th>
-    <td> ${{ client.phone_no }} </td></tr>
+    <tr><th style="text-align: left; color:rgb(14, 13, 13)">Phone Number:</th>
+    <td> {{ client.phone_no }} </td></tr>
     
-    <tr><th style="text-align: left; color:darkgreen">Email:</th>
+    <tr><th style="text-align: left; color:rgb(14, 13, 13)">Email:</th>
     <td> {{ client.email }} </td></tr>
     
-    <tr><th style="text-align: left; color:darkgreen">Address:</th>
+    <tr><th style="text-align: left; color:rgb(14, 13, 13)">Address:</th>
     <td> {{ client.address }} </td></tr>
 
-    <tr><th style="text-align: left; color:darkgreen">City:</th>
+    <tr><th style="text-align: left; color:rgb(14, 13, 13)">City:</th>
     <td> {{ client.city }} </td></tr>
 
-    <tr><th style="text-align: left; color:darkgreen">Province:</th>
+    <tr><th style="text-align: left; color:rgb(14, 13, 13)">Province:</th>
     <td> {{ client.province }} </td></tr>
 
-    <tr><th style="text-align: left; color:darkgreen">Postal Code:</th>
+    <tr><th style="text-align: left; color:rgb(14, 13, 13)">Postal Code:</th>
     <td> {{ client.postal_code }} </td></tr>
+    <br><br>
+    <p><a href="{% url 'project_app:edit_client' client.id %}">Edit client</a></p>
+
+
 </table>
-<br>
+
+<div style="padding:5px"><a href="{% url 'project_app:clients' %}" class="btn btn-outline-danger" role="button" aria-pressed="true">Back</a></div>
 </center>
-
-
 </body>
 {% endblock content %}
 

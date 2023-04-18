@@ -1,6 +1,6 @@
 {% extends "project_app/base.html" %}
 {% block content %}     
-<p>Add a new topic:</p>   
+<p>Add a new Cost:</p>   
 <form action="{% url 'project_app:new_cost' %}" method='post'>
     {% csrf_token %}     
     {{ form.as_p }}     

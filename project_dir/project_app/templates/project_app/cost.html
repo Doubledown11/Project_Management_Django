@@ -2,33 +2,34 @@
 {% block content %}
 <body style="background-color:#f6faf7">
 
-<div class="alert alert-success" role="alert">
-<h3  style="color:purple"><center>Employee: <span style="color:blue">{{ cost }}</span><center></h3>
+<div class="alert alert-dark" role="alert" style="background-color: rgb(111, 112, 124);">
+<center><h3 style="color:rgb(14, 13, 13)"><span style="color:rgb(8, 8, 8)">{{ cost }}</span></h3></center>
 </div>
-<div style="padding:5px"><a href="{% url 'project_app:costs' %}" class="btn btn-outline-danger" role="button" aria-pressed="true">Back</a></div>
+
 
 <center>
 <table style="width: 90%" class="table table-light table-striped table-bordered table-hover w-auto">
-    <tr><th style="text-align: left; color:darkgreen">Cost Name:</th>
+    <tr><th style="text-align: left; color:rgb(14, 13, 13)">Cost Name:</th>
     <td> {{ cost.name }} </td></tr>
     
-    <tr><th style="text-align: left; color:darkgreen">Price Per Unit:</th>
-    <td> ${{ cost.Price_per }} </td></tr>
+    <tr><th style="text-align: left; color:rgb(14, 13, 13)">Price Per Unit:</th>
+    <td> {{ cost.Price_per }} </td></tr>
     
-    <tr><th style="text-align: left; color:darkgreen">Quantity:</th>
+    <tr><th style="text-align: left; color:rgb(14, 13, 13)">Quantity:</th>
     <td> {{ cost.quantity }} </td></tr>
     
-    <tr><th style="text-align: left; color:darkgreen">Total Cost:</th>
+    <tr><th style="text-align: left; color:rgb(14, 13, 13)">Total Cost:</th>
     <td> {{ cost.tot_cost }} </td></tr>
 
-    <tr><th style="text-align: left; color:darkgreen">Costs Project ID:</th>
+    <tr><th style="text-align: left; color:rgb(14, 13, 13)">Costs Related Project ID:</th>
     <td> {{ cost.project_ID }} </td></tr>
-    
+    <br><br>
+    <p><a href="{% url 'project_app:edit_cost' cost.id %}">Edit cost data</a></p>
+
+
 </table>
-<br>
+<div style="padding:5px"><a href="{% url 'project_app:costs' %}" class="btn btn-outline-danger" role="button" aria-pressed="true">Back</a></div>
 </center>
-
-
 </body>
 {% endblock content %}
 
