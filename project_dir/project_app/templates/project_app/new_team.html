@@ -1,0 +1,9 @@
+{% extends "project_app/base.html" %}
+{% block content %}     
+<p>Add a new client:</p>   
+<form action="{% url 'project_app:new_team' %}" method='post'>
+    {% csrf_token %}     
+    {{ form.as_p }}     
+    <button name="submit">Add Team</button>     
+</form>
+{% endblock content %}

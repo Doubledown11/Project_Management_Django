@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
+# I added project_app, and cal to the INSTALLED_APPS list.
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'project_app',
     'users',
+    'datavis',
 ]
 
 MIDDLEWARE = [
@@ -130,7 +133,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
+
 # My settings: 
 
-
+# I had to include the below line of code to 
+# ensure the authentication functionality was operational.
 LOGIN_URL = 'users:login'

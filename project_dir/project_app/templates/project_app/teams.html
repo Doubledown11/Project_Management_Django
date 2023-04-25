@@ -1,0 +1,34 @@
+{% extends "project_app/base.html" %}
+{% block content %}
+<body style="background-color:#464454">
+
+<div class="alert alert-dark" role="alert" style="background-color: rgb(111, 112, 124);">
+  <h2 class="alert-heading" style="color:rgb(13, 13, 13)"><center>All Teams</center></h2>
+  <hr>
+  <p class="mb-0"><center>Select a Team to View its Information</center></p>
+</div>
+
+<div style="padding:5px">
+<a href="{% url 'project_app:new_team' %}" class="btn btn-secondary" role="button" aria-pressed="true">Add New Team</a>
+</div>
+<div style="padding:5px">
+</div>
+<center>
+<table style="width: 90%" class="table table-striped table-light table-bordered table-hover">
+
+  {% for team in teams %}
+    <tr>
+        <td style="text-align: center">
+            <a href="{% url 'project_app:team' team.id %}" class="btn btn-secondary" role="button" aria-pressed="true" style="background-color: #6c757d;">{{ team }}</a>
+            
+        </td>
+        </tr>
+    {% empty %}
+        <li>No teams have been added yet.</li>
+    {% endfor %}
+</table>
+</center>
+
+<br>
+</body>
+{% endblock content %}

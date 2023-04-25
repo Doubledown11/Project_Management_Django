@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include 
 
+
+
+# I added URL patterns for each of the apps I had included in the project.
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
     path('', include('project_app.urls')),
+
 ]

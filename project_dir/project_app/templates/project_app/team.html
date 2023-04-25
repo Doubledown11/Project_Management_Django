@@ -1,0 +1,19 @@
+{% extends 'project_app/base.html' %}
+{% block content %}
+<body style="background-color:#f6faf7">
+
+<div class="alert alert-dark" role="alert" style="background-color: rgb(111, 112, 124);">
+<h3><center><a href="{% url 'project_app:team' team.id %}" style="color:#0d0d0d"> Team: {{ team.tname }} </a><center></h3>
+</div>
+
+<center>
+<table style="width: 90%" class="table table-light table-striped table-bordered table-hover w-auto">
+    <br><br>
+    <p><a href="{% url 'project_app:edit_team' team.id %}">Edit team</a></p>
+
+</table>
+<div style="padding:5px"><a href="{% url 'project_app:teams' %}" class="btn btn-outline-danger" role="button" aria-pressed="true">Back</a></div>
+</center>
+</body>
+{% endblock content %}
+

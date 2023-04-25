@@ -234,14 +234,14 @@
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href = "{% url 'project_app:index'%}" class = "btn btn-secondary">On Track</a> 
-        <a href = "{% url 'project_app:cloud'%}" class = "btn btn-secondary">Cloud</a> 
         <!-- Currently the calendar button only routes the user to the calendar page representing 2023 april. 
         I want to adjust this to be the current year and month in the future-->
-        <a href = "{% url 'project_app:cal' year=2023 month='April' %}" class = "btn btn-secondary">Calendar</a> 
+        <a href = "{% url 'project_app:calendar' %}" class = "btn btn-secondary">Calendar</a>
         <a href = "{% url 'project_app:projects' %}" class = "btn btn-secondary">Projects</a>
         <a href = "{% url 'project_app:comments' %}" class = "btn btn-secondary">Comments</a>        
         <a href = "{% url 'project_app:clients' %}" class = "btn btn-secondary">Clients</a>
         <a href = "{% url 'project_app:employees' %}" class = "btn btn-secondary">Employees</a>
+        <a href = "{% url 'project_app:teams' %}" class = "btn btn-secondary">Teams</a>
         <a href = "{% url 'project_app:tasks' %}" class = "btn btn-secondary">Tasks</a>
         <a href = "{% url 'project_app:costs' %}" class = "btn btn-secondary">Costs</a>
         <li class="divider"></li>
@@ -278,15 +278,18 @@
                 <p class = "indent"> Welcome to 'On-Track', the project management application for all of your project tracking needs.<br>
                     On-Track offers the ability to track all of your relevant project variables.          
                 <br>
-                <body>Add a collapsible group item (accordian bootstrap) to hold diagrams, cloud info.</body>
-                <P class = "indent">Project Overview:</P>
-                {% if user.is_authenticated %}
-                    Hello, {{ user.username }}.
-                    <a href="{% url 'users:logout' %}">Log out</a>
-                {% else %}
-                    <a href="{% url 'users:register' %}">Register</a> -
-                    <a href="{% url 'users:login' %}">Log in</a>
-                {% endif %}
+
+                
+                <!-- Login/logout/register code below -->
+                <div style="position: absolute; top: 0; right: -250px;" class="btn btn-outline-dark btn-rounded" data-mdb-ripple-color="dark">
+                    {% if user.is_authenticated %}
+                    <div style="color: #000000;">Hello, {{ user.username }}.</div> 
+                        <a style="color: #0d29f8;"  href="{% url 'users:logout' %}">Log out</a>
+                    {% else %}
+                        <a style="color: #0d29f8;" href="{% url 'users:register' %}">Register</a> -
+                        <a style="color: #0d29f8;" href="{% url 'users:login' %}">Log in</a>
+                    {% endif %}
+                </div>
                 
                 <br><br><br>
 

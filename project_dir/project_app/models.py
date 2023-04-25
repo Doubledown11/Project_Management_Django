@@ -1,21 +1,28 @@
 # Create your models here.
 from django.db import models
+from django.urls import reverse
 
 # Must organize models.py such that the entities are input heirarchically.
 # If the entities are written in the wrong sequeunce, a function which may 
 # rely on another would result in a NameError.
 
 
-class project_priority(models.Model): 
-    """
-    entity for the project with the current highest priority
-    """ 
 
-    current_priority = models.CharField(max_length=100, null=False, primary_key=True, unique=True)
-    count_tot_project = models.IntegerField(null = False)
-    #Counts the number of employees not currently assigned to a project. 
-    employees_available = models.IntegerField(null = True)
+class Event(models.Model):
+    """entity for events to be added to the calendar"""
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
 
+
+    @property
+    def get_html_url(self):
+        url = reverse('project_app:event_edit', args=(self.id,))
+        return f'<a href="{url}"> {self.title} </a>'
+
+
+# This functionality has not yet been implemented. 
 
 # class project_status(models.Model): 
 #     """ 
@@ -24,8 +31,9 @@ class project_priority(models.Model):
 #     status_id = models.IntegerField(null=False, primary_key=True, unique=True, default=1)
 #     status_code = models.CharField(max_length=100, null=False)
 
-     
 
+     
+# Class representing a client.
 class Client(models.Model): 
     """
     entity for the clients of the firm
@@ -40,6 +48,7 @@ class Client(models.Model):
     postal_code = models.CharField(max_length=20)
 
    
+# Class representing a User.
 class User(models.Model): 
     """
     entity for the various users of the system
@@ -49,7 +58,7 @@ class User(models.Model):
     Lname = models.CharField(max_length=20, null=False)  
 
 
-
+# Class representing a Project.
 class Project(models.Model): 
     """
     Entity for projects. 
@@ -76,6 +85,7 @@ class Project(models.Model):
         return self.project_name 
     
 
+# Class representing a Task.
 class Task(models.Model): 
     """
     entity for the tasks.
@@ -96,6 +106,19 @@ class Task(models.Model):
         return f"{self.task_description[:50]}..."
 
 
+# This functionality has not yet been implemented. 
+class Team(models.Model): 
+    """
+    entity for the various sub-teams which may have formed
+    """
+    id = models.AutoField(primary_key=True, unique=True)
+    project_id = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
+    t_name = models.CharField(max_length=100, null=False)
+    Created_at = models.DateTimeField(auto_now=True)
+    status = models.CharField(max_length=100, null=True)
+
+
+#Class representing an employee.
 class Employee(models.Model): 
     """
     entity for the various employees in the organization.
@@ -106,6 +129,7 @@ class Employee(models.Model):
     emp_address = models.CharField(max_length=100, null=True)
     emp_phone = models.IntegerField(null = True)
     task_ID = models.ForeignKey(Task, on_delete=models.CASCADE, null = True)
+    #team_ID = models.ForeignKey(Team, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
     # Return a string representation of the model
@@ -113,6 +137,7 @@ class Employee(models.Model):
 
 
 
+# Class representing a comment.
 class Comment(models.Model): 
     """
     entity for additional comments
@@ -129,17 +154,7 @@ class Comment(models.Model):
 
 
 
-# class teams(models.Model): 
-#     """
-#     entity for the various sub-teams which may have formed
-#     """
-#     team_id = models.IntegerField(null=False, primary_key=True, unique=True)
-#     project_id = models.ForeignKey(projects, on_delete=models.CASCADE)
-#     t_name = models.CharField(max_length=100, null=False)
-
-
-
-
+# Class representing a Hour.
 class Hour(models.Model): 
     """
     entity used to represent the daily hour log
@@ -157,8 +172,7 @@ class Hour(models.Model):
     employee_ID = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
-
-
+# Class representing a Cost.
 class Cost(models.Model): 
     """Entity allows tracking of the projct costs"""
 
@@ -171,6 +185,7 @@ class Cost(models.Model):
 
 
 
+# Class representing a Entry.
 class Entry(models.Model): 
     """Allows the user to add 'entries' into the comment class."""
 

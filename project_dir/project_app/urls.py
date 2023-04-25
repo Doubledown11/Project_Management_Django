@@ -1,10 +1,18 @@
 from django.urls import path, include 
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.urls import re_path as url
+
 
 app_name = 'project_app'
 
 urlpatterns = [
+
+    #url(r'^index2/$', views.index2, name='index2'),
+    url(r'^calendar/$', views.CalendarView.as_view(), name='calendar'),
+    url(r'^event/new/$', views.event, name='event_new'),
+    url(r'^event/edit/(?P<event_id>\d+)/$', views.event, name='event_edit'),
+
     # Home page
     path('', views.index, name='index'),
 
@@ -47,16 +55,20 @@ urlpatterns = [
     path('new_comment/', views.new_comment, name='new_comment'),
     path('edit_comment/<int:comment_ID>/', views.edit_comment, name='edit_comment'),
 
-    
+    #Paths for teams
+    path('teams/', views.teams, name='teams'),
+    path('team/<int:team_ID>', views.team, name='team'),
+    path('new_team/', views.new_team, name='new_team'),
+    path('edit_team/<int:team_ID>/', views.edit_team, name='edit_team'),
 
-    #Paths for extra pages
-    path('cloud/', views.cloud, name="cloud"),
 
-    #Path for calendar
-    path('cal/<int:year>/<str:month>/', views.cal, name = 'cal'),
    
+   #Path for data visualization
+   #Currently non-operational
+    #path('plot/',views.plot,name='plot'),
 
 
+    # Currently non-operational. Will be included in further iterations.
 
     #paths for hours 
     # path('hours/', views.hours, name='hours'),
@@ -65,7 +77,6 @@ urlpatterns = [
     # Will have to go through and include FK data in the templates associated with hours. 
     # Needed for analytics information. 
 ]
-
 
 
 urlpatterns += staticfiles_urlpatterns()
